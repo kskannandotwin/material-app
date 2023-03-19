@@ -1,9 +1,20 @@
 <h4>New Booking</h4>
 
 <!-- input -->
-<mat-form-field class="w-100">
-    <input type="text" matInput placeholder="Enter Customer Name">
+<!-- floatLabelType or floatLabel: auto | always | never -->
+<!-- align: start | end -->
+<!-- appearance: legacy | standard | fill | outline -->
+<mat-form-field class="w-100" floatLabelType="auto" hideRequiredMarker appearance="fill">
+    <input type="email" matInput placeholder="Enter Customer Email" required="required">
+    <mat-label>Email</mat-label>
+    <mat-hint align="end">Upto 30 Characters</mat-hint>
+    <mat-icon matPrefix>email</mat-icon>
+</mat-form-field>
+
+<mat-form-field class="w-100" floatLabelType="auto" hideRequiredMarker appearance="outline">
+    <input type="text" matInput placeholder="Enter Customer Name" required="required">
     <mat-label>Customer Name</mat-label>
+    <mat-hint align="end">Upto 30 Characters</mat-hint>
 </mat-form-field>
 
 <!-- basic buttons -->
