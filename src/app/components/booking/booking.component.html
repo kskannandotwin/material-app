@@ -4,17 +4,39 @@
 <!-- floatLabelType or floatLabel: auto | always | never -->
 <!-- align: start | end -->
 <!-- appearance: legacy | standard | fill | outline -->
-<mat-form-field class="w-100" floatLabelType="auto" hideRequiredMarker appearance="fill">
+<mat-form-field class="w-100" floatLabelType="auto" MatformFieldAppearance="standard">
     <input type="email" matInput placeholder="Enter Customer Email" required="required">
     <mat-label>Email</mat-label>
     <mat-hint align="end">Upto 30 Characters</mat-hint>
     <mat-icon matPrefix>email</mat-icon>
 </mat-form-field>
 
-<mat-form-field class="w-100" floatLabelType="auto" hideRequiredMarker appearance="outline">
+<mat-form-field class="w-100" floatLabelType="auto" MatformFieldAppearance="standard" color="primary">
     <input type="text" matInput placeholder="Enter Customer Name" required="required">
     <mat-label>Customer Name</mat-label>
     <mat-hint align="end">Upto 30 Characters</mat-hint>
+    <mat-icon matPrefix>person</mat-icon>
+</mat-form-field>
+
+<mat-form-field class="w-100" floatLabelType="auto" MatformFieldAppearance="standard" color="primary">
+    <mat-select required="required">
+        <mat-option value="Afghanistan">Afghanistan</mat-option>
+        <mat-option value="Australia">Australia</mat-option>
+        <mat-option value="Egypt">Egypt</mat-option>
+        <mat-option value="Ethiopia">Ethiopia</mat-option>
+        <mat-option value="Georgia">Georgia</mat-option>
+        <mat-option value="Germany">Germany</mat-option>
+        <mat-option value="Finland">Finland</mat-option>
+        <mat-option value="France">France</mat-option>
+        <mat-option value="India">India</mat-option>
+        <mat-option value="Iraq">Iraq</mat-option>
+        <mat-option value="Italy">Italy</mat-option>
+        <mat-option value="United Kingdom">United Kingdom</mat-option>
+        <mat-option value="United States">United States</mat-option>
+    </mat-select>
+    <mat-label>Country</mat-label>
+    <mat-hint align="end">Choose a country</mat-hint>
+    <mat-icon matPrefix>place</mat-icon>
 </mat-form-field>
 
 <!-- basic buttons -->
