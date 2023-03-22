@@ -41,6 +41,16 @@
             [innerHTML]="getErrorMessage('country', 'required')"></mat-error>
     </mat-form-field>
 
+    <mat-form-field class="w-100" color="primary">
+        <input type="text" matInput placeholder="City" formControlName="city" [matAutocomplete]="citiesAutocomplete">
+        <mat-label>City</mat-label>
+        <mat-hint align="end">Choose or type a city</mat-hint>
+        <mat-icon matPrefix>explore</mat-icon>
+        <mat-autocomplete #citiesAutocomplete="matAutocomplete">
+            <mat-option *ngFor="let city of cities" [value]="city.cityName">{{city.cityName}}</mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
     <!-- stroked buttons -->
     <div class="mb mt">
         <button mat-stroked-button color="primary" class="mr">Save</button>
