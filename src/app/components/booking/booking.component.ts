@@ -37,7 +37,8 @@ export class BookingComponent implements OnInit {
       city: new FormControl(null),
       receiveNewsLetters: new FormControl(null),
       hobbies: new FormArray([]),
-      allHobbies: new FormControl(false)
+      allHobbies: new FormControl(false),
+      gender: new FormControl(null, [Validators.required])
     });
 
     // add form controls to form array
@@ -141,6 +142,13 @@ export class BookingComponent implements OnInit {
       case 'country': {
         if (errorType === 'required') {
           return 'You must choose a <strong>Country</strong>';
+        } else {
+          return '';
+        }
+      }
+      case 'gender': {
+        if (errorType === 'required') {
+          return 'Choose gender either Male or Female or Others';
         } else {
           return '';
         }
