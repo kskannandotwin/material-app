@@ -32,6 +32,22 @@ export class BookingComponent implements OnInit {
   // datepicker
   minDate: Date = new Date('1950-01-01');
   maxDate: Date = new Date('2010-12-31');
+  dateHint: string = 'Choose date of birth';
+  startDate: Date = new Date('2002-01-01');
+
+  dateFilter(date: any) {
+    return date && date.getDay() !== 0 && date.getDay() !== 6;
+  }
+
+  onDateChange() {
+    if (this.formGroup.value.dateOfBirth) {
+      let date = new Date(this.formGroup.value.dateOfBirth);
+      this.dateHint = `You born on ${date.toString().substring(0, date.toString().indexOf(' '))}`;
+      console.log(date.toString());
+    } else {
+      this.dateHint = 'Choose the date of birth';
+    }
+  }
 
   constructor(private countriesService: CountriesService, private citiesService: CitiesService) {
     this.formGroup = new FormGroup({
