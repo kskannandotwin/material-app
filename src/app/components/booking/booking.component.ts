@@ -69,6 +69,9 @@ export class BookingComponent implements OnInit {
     this.hobbies.forEach(() => {
       this.hobbiesFormArray.push(new FormControl(false));
     });
+
+    // chips
+    this.AllCountriesClicked();
   }
 
   // returns the form array
@@ -184,6 +187,43 @@ export class BookingComponent implements OnInit {
   // when the user clicks on OK chip
   onOKClick() {
     console.log('OK chip clicked');
-    
+  }
+
+  // chips
+  All: boolean = true;
+  UK: boolean = false;
+  USA: boolean = false;
+  banks: any[] = [];
+  banksOfUK: any[] = [
+    { bankName: 'HSBC', countryName: 'UK' },
+    { bankName: 'Royal Bank of Scotland', countryName: 'UK' }
+  ];
+  banksOfUSA: any[] = [
+    { bankName: 'JPMorgan Chase', countryName: 'USA' },
+    { bankName: 'Bank of America', countryName: 'USA' }
+  ];
+
+  // all chips clicked
+  AllCountriesClicked() {
+    this.banks = [...this.banksOfUK, ...this.banksOfUSA];
+    this.All = true;
+    this.UK = false;
+    this.USA = false;
+  }
+
+  // uk chip clicked
+  UKClicked() {
+    this.banks = [...this.banksOfUK];
+    this.All = false;
+    this.UK = true;
+    this.USA = false;
+  }
+
+  // usa chip clicked
+  USAClicked() {
+    this.banks = [...this.banksOfUSA];
+    this.All = false;
+    this.UK = false;
+    this.USA = true;
   }
 }
