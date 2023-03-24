@@ -148,6 +148,16 @@
         </mat-button-toggle-group>
     </div>
 
+    <!-- chips with autocomplete -->
+    <mat-form-field class="w-100">
+        <mat-label>Favorite Fruits</mat-label>
+        <input type="text" matInput placeholder="Type fruit name.." formControlName="fruits"
+            [matAutocomplete]="fruitsAutocomplete">
+        <mat-autocomplete #fruitsAutocomplete="matAutocomplete">
+            <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit.name">{{fruit.name}}</mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
     <!-- stroked buttons -->
     <div class="mb mt">
         <button mat-stroked-button color="primary" class="mr">Save</button>

@@ -4,7 +4,9 @@ import { CountriesService } from 'src/app/services/countries.service';
 import { CustomErrorStateMatcher } from 'src/app/helpers/custom-error-state-matcher';
 import { CitiesService } from 'src/app/services/cities.service';
 import { City } from 'src/app/modals/city';
-import { debounceTime, tap, switchMap } from 'rxjs/operators';
+import { debounceTime, tap, switchMap, map, startWith } from 'rxjs/operators';
+import { Fruit } from 'src/app/modals/fruit';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-booking',
@@ -62,7 +64,8 @@ export class BookingComponent implements OnInit {
       dateOfBirth: new FormControl(null),
       studyPeriodStart: new FormControl(null),
       studyPeriodEnd: new FormControl(null),
-      expertiseLevel: new FormControl(null)
+      expertiseLevel: new FormControl(null),
+      fruits: new FormControl(null)
     });
 
     // add form controls to form array
@@ -72,6 +75,17 @@ export class BookingComponent implements OnInit {
 
     // chips
     this.AllCountriesClicked();
+
+    // chips with autocomplete
+    this.filteredFruits = this.getFormControl('fruits').valueChanges.pipe(
+      startWith(''),
+      map((fruit: string | null) => {     
+        return fruit ? (() => {
+          return this.allFruits.filter(fruitObj => fruitObj.name.toLowerCase().indexOf(fruit.toLowerCase()) === 0);
+        })()
+          : this.allFruits.slice()
+      })
+    );
   }
 
   // returns the form array
@@ -226,4 +240,24 @@ export class BookingComponent implements OnInit {
     this.UK = false;
     this.USA = true;
   }
+
+  // chips with autocomplete
+  allFruits: Fruit[] = [
+    { name: "Apple" },
+    { name: "Apricot" },
+    { name: "Banana" },
+    { name: "Blueberry" },
+    { name: "Grape" },
+    { name: "Honeydew" },
+    { name: "Kiwi" },
+    { name: "Lemon" },
+    { name: "Mandarin" },
+    { name: "Mango" },
+    { name: "Nectarine" },
+    { name: "Orange" },
+    { name: "Strawberry" },
+    { name: "Watermelon" }
+  ];
+
+  filteredFruits: Observable<Fruit[]>;
 }
