@@ -137,6 +137,15 @@
     </div>
 
     <div>
+        <!-- in tutorial it was mat-chip-list instead of mat-chip-listbox -->
+        <!-- in tutorial it was selected instead of highlighted -->
+        <mat-chip-listbox>
+            <mat-chip color="primary" highlighted (click)="onOKClick()">OK</mat-chip>
+            <mat-chip color="warn" highlighted>Cancel</mat-chip>
+        </mat-chip-listbox>
+    </div>
+
+    <div>
         {{formGroup.value | json}}
     </div>
 </form>
