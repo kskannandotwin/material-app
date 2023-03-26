@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CountriesService } from 'src/app/services/countries.service';
 import { CustomErrorStateMatcher } from 'src/app/helpers/custom-error-state-matcher';
@@ -7,6 +7,7 @@ import { City } from 'src/app/modals/city';
 import { debounceTime, tap, switchMap, map, startWith } from 'rxjs/operators';
 import { Fruit } from 'src/app/modals/fruit';
 import { Observable } from 'rxjs';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-booking',
@@ -79,7 +80,7 @@ export class BookingComponent implements OnInit {
     // chips with autocomplete
     this.filteredFruits = this.getFormControl('fruits').valueChanges.pipe(
       startWith(''),
-      map((fruit: string | null) => {     
+      map((fruit: string | null) => {
         return fruit ? (() => {
           return this.allFruits.filter(fruitObj => fruitObj.name.toLowerCase().indexOf(fruit.toLowerCase()) === 0);
         })()
@@ -260,4 +261,35 @@ export class BookingComponent implements OnInit {
   ];
 
   filteredFruits: Observable<Fruit[]>;
+  fruits: Fruit[] = [{name: 'Orange'}];
+
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+
+  @ViewChild('fruitInput')
+  fruitInput!: ElementRef<HTMLInputElement>;
+
+  // when the user presses any key like ENTER or COMMA after typing some text in the text box
+  add(event: { value: string; }): void {
+    // add textbox value as chip
+    if ((event.value || '').trim()) {
+      this.fruits.push({name: event.value.trim()});
+      this.formGroup.patchValue({fruits: null});
+      this.fruitInput.nativeElement.value = '';
+    }
+  }
+
+  // when the user clicks (select) an item in the autocomplete
+  selected(event: any) {
+    this.fruits.push({ name: event.option.viewValue });
+    this.formGroup.patchValue({ fruits: null });
+    this.fruitInput.nativeElement.value = '';
+  }
+
+  // when the user clicks on remove button for this chip
+  remove(fruit: any) {
+    const index = this.fruits.indexOf(fruit);
+    if (index >= 0) {
+      this.fruits.splice(index, 1);
+    }
+  }
 }

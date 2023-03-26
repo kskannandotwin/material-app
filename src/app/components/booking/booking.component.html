@@ -151,11 +151,27 @@
     <!-- chips with autocomplete -->
     <mat-form-field class="w-100">
         <mat-label>Favorite Fruits</mat-label>
-        <input type="text" matInput placeholder="Type fruit name.." formControlName="fruits"
-            [matAutocomplete]="fruitsAutocomplete">
-        <mat-autocomplete #fruitsAutocomplete="matAutocomplete">
+
+        <!-- auto complete -->
+        <mat-autocomplete #fruitsAutocomplete="matAutocomplete" (optionSelected)="selected($event)">
             <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit.name">{{fruit.name}}</mat-option>
         </mat-autocomplete>
+
+        <!-- chips -->
+        <!-- in tutorial mat-chip-list instead of mat-chip-grid -->
+        <mat-chip-grid #chipGrid>
+            <!-- in tutorial mat-chip instead of mat-chip-row -->
+            <mat-chip-row *ngFor="let fruit of fruits" [removable]="true" (removed)="remove(fruit)" [value]="fruit.name">
+                {{fruit.name}}
+                <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip-row>
+
+            <!-- input -->
+            <input type="text" matInput placeholder="Type fruit name.." #fruitInput formControlName="fruits"
+                [matAutocomplete]="fruitsAutocomplete" [matChipInputFor]="chipGrid"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
+            <!-- in tutorial #fruitInput assigned in mat-autocomplete instead of assigned to input -->
+        </mat-chip-grid>
     </mat-form-field>
 
     <!-- stroked buttons -->
