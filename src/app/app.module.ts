@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { BookingComponent } from './components/booking/booking.component';
+import { BookingsListComponent } from './components/bookings-list/bookings-list.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -25,7 +26,8 @@ export const MY_FORMATS = {
 @NgModule({
   declarations: [
     AppComponent,
-    BookingComponent
+    BookingComponent,
+    BookingsListComponent
   ],
   imports: [
     BrowserModule,
