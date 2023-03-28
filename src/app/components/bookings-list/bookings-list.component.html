@@ -38,7 +38,12 @@
             <!-- loading / progress -->
             <ng-container matColumnDef="loading">
                 <td mat-footer-cell *matFooterCellDef class="text-italic" colspan="6" [style.text-align]="'center'"
-                    [ngClass]="{'hidden': isLoadingCompleted}">{{bookingLoadingStatus}}</td>
+                    [ngClass]="{'hidden': isLoadingCompleted}">
+                    <div [ngClass]="{'hidden': isError}">
+                        <mat-spinner diameter="40" class="margin-auto"></mat-spinner>
+                    </div>
+                    {{bookingLoadingStatus}}
+                </td>
             </ng-container>
 
             <!-- header row and data rows -->
@@ -46,8 +51,8 @@
             <tr mat-row *matRowDef="let booking; columns: columnsToDisplay"></tr>
 
             <!-- footer row -->
-            <tr mat-footer-row *matFooterRowDef="['customerName', 'date']; sticky: true" class="text-italic font-weight-bold"
-                [ngClass]="{'hidden' : !isLoadingCompleted}"></tr>
+            <tr mat-footer-row *matFooterRowDef="['customerName', 'date']; sticky: true"
+                class="text-italic font-weight-bold" [ngClass]="{'hidden' : !isLoadingCompleted}"></tr>
 
             <tr mat-footer-row *matFooterRowDef="['loading']"></tr>
         </table>
