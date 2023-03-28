@@ -7,6 +7,7 @@
             <ng-container matColumnDef="customerName">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer Name</th>
                 <td mat-cell *matCellDef="let booking" class="w-35">{{booking.customerName}}</td>
+                <td mat-footer-cell *matFooterCellDef colspan="2">Total Bookings:</td>
             </ng-container>
             <!-- customer name column definition ends -->
 
@@ -21,6 +22,7 @@
             <ng-container matColumnDef="date">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
                 <td mat-cell *matCellDef="let booking" class="w-25">{{booking.date}}</td>
+                <td mat-footer-cell *matFooterCellDef colspan="2">{{rows.length}}</td>
             </ng-container>
             <!-- date column definition ends -->
 
@@ -33,11 +35,16 @@
             </ng-container>
             <!-- action column definition ends -->
 
+            <!-- header row and data rows -->
             <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
             <tr mat-row *matRowDef="let booking; columns: columnsToDisplay"></tr>
+
+            <!-- footer row -->
+            <tr mat-footer-row *matFooterRowDef="['customerName', 'date']" class="text-italic font-weight-bold"
+                [ngClass]="{'hidden' : !isLoadingCompleted}"></tr>
         </table>
     </div>
-    <div>
+    <div [ngClass]="{'hidden': !isLoadingCompleted}">
         <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     </div>
 </form>
