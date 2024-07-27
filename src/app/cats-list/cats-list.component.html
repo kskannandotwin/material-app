@@ -1,0 +1,23 @@
+{{ cats | json }}
+
+<div *ngFor="let cat of cats">
+    <p>{{ cat._id }}</p>
+    <p>{{ cat.status.sentCount }}</p>
+</div>
+
+<div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="_id">
+            <th mat-header-cell *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="text">
+            <th mat-header-cell *matHeaderCellDef>Text</th>
+            <td mat-cell *matCellDef="let element"> {{element.text}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
