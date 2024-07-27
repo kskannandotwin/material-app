@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class CatsListComponent {
   cats: Cat[] = [];
 
-  displayedColumns: string[] = ['_id', 'text'];
+  displayedColumns: string[] = ['verified', 'sentCount', '_id', 'user', 'text', '__v', 'source', 'updatedAt', 'type', 'createdAt', 'deleted', 'used'];
   dataSource = new MatTableDataSource<Cat>(this.cats);
 
   constructor(private catsService: CatsService) {

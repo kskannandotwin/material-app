@@ -3,12 +3,20 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 
 export interface Cat {
-  _id: string;
-  text: string;
   status: {
     verified: boolean;
-    sentCount: string;
-  }
+    sentCount: number;
+  };
+  _id: string;
+  user: string;
+  text: string;
+  __v: number;
+  source: string;
+  updatedAt: string;
+  type: string;
+  createdAt: string;
+  deleted: boolean;
+  used: boolean;
 }
 
 @Injectable({
