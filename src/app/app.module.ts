@@ -10,13 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableComponent } from './table/table.component';
 import { CatsListComponent } from './cats-list/cats-list.component';
 import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
+import { BadgeComponent } from './badge/badge.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
     CatsListComponent,
-    AutoCompleteComponent
+    AutoCompleteComponent,
+    BadgeComponent
   ],
   imports: [
     BrowserModule,
