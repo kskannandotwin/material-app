@@ -16,6 +16,7 @@ import { ApiService } from './api.service';
 import { ButtonComponent } from './button/button.component';
 import { ButtonToggleComponent } from './button-toggle/button-toggle.component';
 import { CardComponent } from './card/card.component';
+import { CheckboxComponent } from './checkbox/checkbox.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CardComponent } from './card/card.component';
     BottomSheetComponent,
     ButtonComponent,
     ButtonToggleComponent,
-    CardComponent
+    CardComponent,
+    CheckboxComponent
   ],
   imports: [
     BrowserModule,
