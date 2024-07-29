@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableComponent } from './table/table.component';
 import { CatsListComponent } from './cats-list/cats-list.component';
 import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
 import { BadgeComponent } from './badge/badge.component';
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { ApiService } from './api.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { BadgeComponent } from './badge/badge.component';
     TableComponent,
     CatsListComponent,
     AutoCompleteComponent,
-    BadgeComponent
+    BadgeComponent,
+    BottomSheetComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,10 @@ import { BadgeComponent } from './badge/badge.component';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    HttpClient,
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
