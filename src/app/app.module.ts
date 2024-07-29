@@ -13,6 +13,7 @@ import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
 import { BadgeComponent } from './badge/badge.component';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { ApiService } from './api.service';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ApiService } from './api.service';
     CatsListComponent,
     AutoCompleteComponent,
     BadgeComponent,
-    BottomSheetComponent
+    BottomSheetComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
