@@ -14,6 +14,7 @@ import { BadgeComponent } from './badge/badge.component';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { ApiService } from './api.service';
 import { ButtonComponent } from './button/button.component';
+import { ButtonToggleComponent } from './button-toggle/button-toggle.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ButtonComponent } from './button/button.component';
     AutoCompleteComponent,
     BadgeComponent,
     BottomSheetComponent,
-    ButtonComponent
+    ButtonComponent,
+    ButtonToggleComponent
   ],
   imports: [
     BrowserModule,
