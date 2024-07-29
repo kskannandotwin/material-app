@@ -17,6 +17,7 @@ import { ButtonComponent } from './button/button.component';
 import { ButtonToggleComponent } from './button-toggle/button-toggle.component';
 import { CardComponent } from './card/card.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
+import { ChipsComponent } from './chips/chips.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
     ButtonComponent,
     ButtonToggleComponent,
     CardComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    ChipsComponent
   ],
   imports: [
     BrowserModule,
